@@ -1,10 +1,5 @@
 # Prüfungsleistung in Web Programmierung
 
-## Ersteller
-
-Tom Heneka
-
-
 ## Aufgabe
 Erstellt eure eigene Website/ WebApp auf Basis einer offenen API
 
@@ -24,3 +19,7 @@ Projekt etc.)
 ## Varianten 
 + Bootrap / JS <span style="color:lime"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<--- Ausgewählt </span>
 + Angular / IONIC
+
+## Projektinformationen
+**Gewählte Api:** ...
+
