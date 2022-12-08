@@ -17,7 +17,7 @@ Projekt etc.)
 + Responsive-Layout
 
 ## Varianten 
-+ Bootrap / JS <span style="color:lime"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<--- Ausgewählt </span>
++ Bootrap / JS <span style="color:lime"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<--- Ausgewählt </span> > __Note__
 + Angular / IONIC
 
 ## Projektinformationen
