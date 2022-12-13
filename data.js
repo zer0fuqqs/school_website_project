@@ -7,8 +7,12 @@ const BASE_URL = "https://www.alphavantage.co/query?"
 Chart.defaults.borderColor = 'lime';
 Chart.defaults.color = 'white';
 
+// Funktion die die API anspricht
+async function FetchMonthlyStockData(API_KEY, Symbol) {
 
-async function getMonthlyStockData(API_KEY, Symbol) {
+    let ChartDiv = document.getElementById("ChartDiv");
+
+    ChartDiv.innerHTML = '<div style="margin-right:610px;"> <div class="spinner-border" style="width: 3rem; height: 3rem; margin-top: 260px; ;" role="status"> <span class="visually-hidden">Loading...</span> </div </div> </div>'
 
     let data2022 = new Object();
 
@@ -26,36 +30,28 @@ async function getMonthlyStockData(API_KEY, Symbol) {
             }
         }
     } catch(e) {
-        alert("Stock couldnt be find. Please check if your symbol is right!")
-        throw new Error("Something went badly wrong!");
+        
+        ChartDiv.innerHTML = ' <div class="text-white" style="text-align: center;font-size: 18px; margin-right:500px;margin-top: 260px;"> <p> Symbol konnte nicht gefunden werden </p> </div>'
+        throw new Error("Stock couldn't be found!");
     }
 
     return data2022
 }
 
-async function ShowSpinner() {
-    let SpinnerDiv = document.createElement('div');
-    SpinnerDiv.setAttribute('id', 'Spinner')
-    SpinnerDiv.classList.add('justify-content-center')
-    SpinnerDiv.classList.add('d-flex')
-    SpinnerDiv.innerHTML='<div class="spinner-border" style="width: 3rem; height: 3rem; margin-top: 260px;" role="status"> <span class="visually-hidden">Loading...</span> </div </div>'
 
-    let parent = document.getElementById("ChartDiv")
-    parent.parentNode.insertBefore(SpinnerDiv, parent)
-
-
-}
-
-function DeleteSpinnerAndShowDiagramm(ChartElement, labels, prices, symbol) {
-    document.getElementById('Spinner').remove();
+function DeleteSpinnerAndShowDiagramm( labels, prices, symbol) {
+    let ChartDiv = document.getElementById("ChartDiv");
+    ChartDiv.innerHTML = '<canvas id="myChart" height="600px" width="1250px"><div style="margin-right:610px;">'
+     // Chart Canvas
+     const ChartElement = document.getElementById('myChart');
     DrawDiagramm(ChartElement, labels, prices, symbol);
 }
 
 
 
-async function GetData() { 
 
-    ShowSpinner()
+// Funktion beko
+async function GetData() { 
 
     // Check ob schon ein Chart erstellt wurde, da der canvas mit dem chart immer leer sein muss 
     // um ein neuen Chart zu generieren
@@ -65,13 +61,12 @@ async function GetData() {
     }
 
     // Das eingegebene Symbol vom Input Feld
-    let symbol = document.getElementById("symbolInput").value
-    // Chart Canvas
-    const ChartElement = document.getElementById('myChart');
-
-    let data2022 = await getMonthlyStockData(API_KEY, symbol)
+    let symbol = document.getElementById("symbolInput").value.toUpperCase()
+   
+    let data2022 = await FetchMonthlyStockData(API_KEY, symbol)
     let labels = [];
     let prices = [];
+
 
     Object.keys(data2022).forEach(element => {
         labels.push(new Date(element).toLocaleString('en-de',{month:'short', year:'numeric'}))
@@ -82,7 +77,7 @@ async function GetData() {
         }
     
 
-    setTimeout( () => {DeleteSpinnerAndShowDiagramm(ChartElement, labels, prices, symbol)}, 800); 
+    setTimeout( () => {DeleteSpinnerAndShowDiagramm(labels, prices, symbol)}, 800); 
 }
 
 
