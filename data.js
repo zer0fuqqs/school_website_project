@@ -80,8 +80,6 @@ async function GetData() {
     setTimeout( () => {DeleteSpinnerAndShowDiagramm(labels, prices, symbol)}, 800); 
 }
 
-
-
 async function DrawDiagramm(ChartElement, labels, prices, symbol) {
     const chart = new Chart(ChartElement, {
         // The type of chart we want to create
