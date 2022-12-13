@@ -21,5 +21,5 @@ Projekt etc.)
 + Angular / IONIC
 
 ## Projektinformationen
-**Gewählte Api:** [Alphavantage Stock API](https"://www.alphavantage.co/)
+**Gewählte Api:** [Alphavantage Stock API](https://www.alphavantage.co/)
 
