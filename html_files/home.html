@@ -40,20 +40,24 @@
                 <form class="d-flex">
                     <input class="form-control ms-5" id="symbolInput" type="search" placeholder="Stock Symbol" aria-label="Search">
                     <button class="btn btn-outline-success ms-5" type="button" id="searchBtn" onclick="GetData()">Search</button>
+                    <a href="https://www.google.com/search?q=Stock+Ticker+Symbol" target="_blank"> <img class="float-end" src="../bilder/questionmark_logo.png" alt="" height="25px" width="25px" title="Was ist ein Stock Symbol?" style="margin-top: 7px; margin-left: 700px;"> </a> 
                 </form>
                 </div>
             </nav>
         </div>
-        <div class="container-md bg-dark text-white rounded p-4" style="height: 650px; margin-top: 50px; margin-bottom: 100px;">
-
-          
+        <div class="container-md bg-dark text-white rounded p-4" style="height: 650px; margin-top: 50px; margin-bottom: 50px;">
 
             <!-- Canvas indem der Chart generiert wird -->
-        <div class="d-flex justify-content-end" id="ChartDiv">
+          <div class="d-flex justify-content-end" id="ChartDiv">
             <canvas id="myChart" height="600px" width="1250px"></canvas>
+          </div> 
         </div>
-            
-        </div>
+        <div class="container-md bg-dark text-white rounded p-4" style="height: 200px; margin-top: 50px; margin-bottom: 50px;">
+
+          <!-- Canvas indem der Chart generiert wird -->
+        <div class="d-flex justify-content-end" id="ChartDiv">
+        </div> 
+      </div>
     </main>
 
 
@@ -190,9 +194,9 @@
 <style>
 
     body {
-        background-color: darkslategrey;   
-        overflow: scroll;
-        overflow-x: hidden;
+      background: #101112;
+      overflow: scroll;
+      overflow-x: hidden;
 
     }
 

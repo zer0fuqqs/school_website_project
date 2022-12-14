@@ -31,7 +31,7 @@ async function FetchMonthlyStockData(API_KEY, Symbol) {
         }
     } catch(e) {
         
-        ChartDiv.innerHTML = ' <div class="text-white" style="text-align: center;font-size: 18px; margin-right:500px;margin-top: 260px;"> <p> Symbol konnte nicht gefunden werden </p> </div>'
+        ChartDiv.innerHTML = `<div class="text-white" style="text-align: center;font-size: 18px; margin-right:500px;margin-top: 260px;"> <p> ${Symbol} konnte nicht gefunden werden </p> </div>`
         throw new Error("Stock couldn't be found!");
     }
 
