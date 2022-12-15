@@ -1,4 +1,4 @@
-// Script das die Daten der API bekommt //
+// Script das die Aktiendaten der API bekommt //
 
 //API KEY //
 const API_KEY = "MW31DEJ7BTTNXQ2B"

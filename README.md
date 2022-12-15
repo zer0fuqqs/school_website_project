@@ -23,5 +23,5 @@ Projekt etc.)
 ## Projektinformationen
 **Gewählte Api:** [Alphavantage Stock API](https://www.alphavantage.co/)
 
-Die Dokumentation zur Alphavantage Stock API finden Sie [hier.](https://www.alphavantage.co/documentation/)
+Die Dokumentation zur Alphavantage Stock API finden Sie [hier](https://www.alphavantage.co/documentation/).
 
