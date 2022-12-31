@@ -1,8 +1,14 @@
 // Script das die Aktiendaten der API bekommt //
 
+
 //API KEY //
 const API_KEY = "MW31DEJ7BTTNXQ2B"
 const BASE_URL = "https://www.alphavantage.co/query?"
+
+//EventListener
+let searchButton = document.getElementById("searchBtn")
+searchButton.addEventListener("click", GetData)
+searchButton.addEventListener("click", getStockInformations)
 
 Chart.defaults.borderColor = 'lime';
 Chart.defaults.color = 'white';
@@ -38,6 +44,19 @@ async function FetchMonthlyStockData(API_KEY, Symbol) {
     return data2022
 }
 
+async function getStockInformations() {
+    let Symbol = document.getElementById("symbolInput").value.toUpperCase()
+    let stockName = document.getElementById("StockName")
+    let stockDescription = document.getElementById("StockDescription")
+
+    let path = BASE_URL + `function=OVERVIEW&symbol=${Symbol}&apikey=${API_KEY}`;
+    let StockInfo = await fetch(path).then(res => res.json());
+
+    stockName.innerText = StockInfo.Name
+    stockDescription.innerText = StockInfo.Description
+
+}
+
 
 function DeleteSpinnerAndShowDiagramm( labels, prices, symbol) {
     let ChartDiv = document.getElementById("ChartDiv");
@@ -50,7 +69,7 @@ function DeleteSpinnerAndShowDiagramm( labels, prices, symbol) {
 
 
 
-// Funktion beko
+// Funktion bekommen
 async function GetData() { 
 
     // Check ob schon ein Chart erstellt wurde, da der canvas mit dem chart immer leer sein muss 
@@ -116,3 +135,51 @@ async function DrawDiagramm(ChartElement, labels, prices, symbol) {
             }
         })
 }
+
+function randomInteger(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  }
+
+async function getStockInformationsRandom(symbol) {
+    
+    let stockName = document.getElementById("StockName")
+    let stockDescription = document.getElementById("StockDescription")
+
+    let path = BASE_URL + `function=OVERVIEW&symbol=${symbol}&apikey=${API_KEY}`;
+    let StockInfo = await fetch(path).then(res => res.json());
+
+    stockName.innerText = StockInfo.Name
+    stockDescription.innerText = StockInfo.Description
+}
+
+// Funktion bekommen
+async function GetRandomStock() { 
+
+   
+    let Symbols = ["IBM", "AAPL","NFLX","TSLA"]
+    let symbol = []
+    symbol.push(Symbols[randomInteger(0,3)])
+    
+   
+    let data2022 = await FetchMonthlyStockData(API_KEY, symbol[0])
+    let labels = [];
+    let prices = [];
+
+    getStockInformationsRandom(symbol[0])
+
+
+    Object.keys(data2022).forEach(element => {
+        labels.push(new Date(element).toLocaleString('en-de',{month:'short', year:'numeric'}))
+    });
+
+        for(const [key, value] of Object.entries(data2022)) {
+            prices.push(value["4. close"])
+        }
+    
+
+    setTimeout( () => {DeleteSpinnerAndShowDiagramm(labels, prices, symbol[0])}, 800); 
+}
+
+window.onload = GetRandomStock()
+
+
