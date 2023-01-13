@@ -5,6 +5,8 @@
 const API_KEY = "MW31DEJ7BTTNXQ2B"
 const BASE_URL = "https://www.alphavantage.co/query?"
 
+//test
+
 //EventListener
 let searchButton = document.getElementById("searchBtn")
 searchButton.addEventListener("click", GetData)
